@@ -1,0 +1,77 @@
+import { Component, OnInit } from "@angular/core";
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { DROPDOWN_DIRECTIVES } from "ng2-dropdown";
+import {LoginState} from "../../services/models/loginState";
+import {LoginStateStore} from "../../services/loginStateStore";
+import {TranslateService, TranslatePipe} from "ng2-translate/ng2-translate";
+
+@Component({
+    selector: 'header-outlet',
+    template: `
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"><a [routerLink]="['projects']" >{{ 'PROJECT_LIST' | translate }}</a></li>
+                    <li *ngIf="(groupLevel|async)==='4'" [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"><a [routerLink]="['admin']" >{{ 'ADMIN' | translate }}</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li dropdown>
+                            <a style="cursor: pointer;" dropdown-open><span class="fa fa-language"></span>  {{langSelected}}</a>
+                            <ul class="dropdown-menu">
+                                <li><a (click)="updateLanguage('en')">en</a></li>
+                                <li><a (click)="updateLanguage('kr')">kr</a></li>
+                            </ul>
+                    </li>
+                    <li *ngIf="(loggedIn|async)===false"><a style="cursor: pointer;" (click)="registerAction()"><span class="glyphicon glyphicon-user"></span>  {{ 'SIGN_UP' | translate }}</a></li>
+                    <li *ngIf="(loggedIn|async)===false"><a style="cursor: pointer;" (click)="loginAction()"><span class="glyphicon glyphicon-log-in"></span>  {{ 'LOGIN' | translate }} </a></li>
+                    <li *ngIf="(loggedIn|async)===true"><a style="cursor: pointer;" (click)="logoutAction()"><span class="glyphicon glyphicon-log-in"></span>  {{ userName | async }}</a></li>
+                </ul>
+            </div>
+        </nav>
+    `,
+    directives: [ROUTER_DIRECTIVES, DROPDOWN_DIRECTIVES],
+    pipes: [TranslatePipe]
+})
+export class HeaderComponent implements OnInit {
+
+    private langSelected;
+
+    get loggedIn() {
+        return this.loginStateStore.loginState.map((loginState: LoginState) => loginState.loggedIn);
+    }
+
+    get userName() {
+        return this.loginStateStore.loginState.map((loginState: LoginState) => loginState.userName);
+    }
+
+    get groupLevel(){
+        return this.loginStateStore.loginState.map((loginState: LoginState) => loginState.groupLevel);
+    }
+
+    ngOnInit():any {
+        this.loginStateStore.refreshLoginState();
+
+        var userLang = navigator.language.split('-')[0];
+        userLang = /(kr|en)/gi.test(userLang) ? userLang : 'en';
+        this.updateLanguage(userLang);
+    }
+    
+    constructor(private loginStateStore: LoginStateStore, public translateService: TranslateService) {}
+
+    loginAction() {
+        window.location.href='https://join-test.vshower.com/?callback_url=http%253A%252F%252Fota-test.vshower.com%3A3000%252Fapi%252Flogin';
+    }
+
+    registerAction() {
+        window.location.href='https://join-test.vshower.com/register_v2?callback_url=http%3A%2F%2Fota-test.vshower.com%3A3000%2F%23%2Flogin'
+    }
+
+    logoutAction() {
+        this.loginStateStore.logoutAction();
+    }
+
+    updateLanguage(lang) {
+        this.langSelected = lang;
+        this.translateService.use(lang);
+    }
+}

@@ -1,0 +1,23 @@
+<form [ngFormModel]="projectForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
+  <div class="form-group" [ngClass]="{'has-danger': !projectForm.controls.project_name.valid}" >
+    <label class="form-control-label" for="project_name_field">{{ 'PROJECT.NAME' | translate }}</label>
+    <input type="text" class="form-control" placeholder="{{ 'PROJECT.NAME' | translate }}" id="project_name_field" required
+           ngControl='project_name'  >
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-danger': !projectForm.controls.project_code.valid}" >
+    <label class="form-control-label" for="project_code_field">{{ 'PROJECT.CODE' | translate }}</label>
+    <input type="text" class="form-control" placeholder="{{ 'PROJECT.CODE' | translate }}" id="project_code_field" required
+           ngControl="project_code" >
+  </div>
+
+  <div class="form-group">
+    <label class="form-control-label" for="is_public_field">{{ 'PROJECT.PUBLIC' | translate }} 
+      <input type="checkbox" class="form-control" placeholder="Public" id="is_public_field"
+                                                                   ngControl="is_public" >
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!projectForm.valid">{{ 'SUBMIT' | translate }}</button>
+</form>

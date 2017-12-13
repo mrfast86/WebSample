@@ -1,0 +1,13 @@
+#compiled js codes in client
+/client/**/*.js
+*.map
+**/bundle.js
+
+#project libraries and IDE
+node_modules/
+.idea/*
+typings/*
+*.log
+
+#Server config.js
+/server/config.js

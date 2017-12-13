@@ -1,0 +1,62 @@
+{
+  "SITE_NAME": "VISUAL SHOWER OTA",
+  "HOME":"Home",
+
+  "SIGN_UP":"Sign Up",
+  "LOGIN":"Login",
+  "SUBMIT": "Submit",
+  "EDIT": "Edit",
+  "DELETE": "Delete",
+  "DOWNLOAD": "Download",
+
+  "PROJECT_LIST": "Project List",
+  "ADMIN": "Adminstration",
+  "FILE_LIST": "File List",
+
+  "PUBLIC":"Public",
+  "NON_PUBLIC":"Non-Public",
+
+  "NEW_PROJECT": "Add New Project",
+  "UPDATE_PROJECT": "Update Project",
+  "UPLOAD_FILE": "Upload File",
+  "PROGRESS": "Progress",
+
+  "OOPS":"Oops",
+  "NOT_FOUND": "Page not found",
+  "SORRY_MESSAGE": "Sorry.. Unexpected error occurred",
+  "TAKE_ME_HOME": "Take me Home",
+
+  "NO_PROJECT":"No projects to display",
+  "NO_FILE": "No files to display",
+
+  "PROJECT": {
+    "NAME":  "Project Name",
+    "CODE":  "Project Code",
+    "FILE_COUNT": "Count",
+    "PUBLIC": "Public",
+    "DELETE": "Delete following project?"
+  },
+
+  "FILE": {
+    "DROP_INSTRUCTION": "Drop File Here..",
+    "NAME":  "File Name",
+    "PROJECT_NAME":  "Project Name",
+    "PLATFORM":  "Platform",
+    "SERVICE_TYPE": "Service Type",
+    "VERSION": "Version",
+    "BUILD_DATETIME": "Build Date",
+    "BUILD_TIME": "Build Time",
+    "COMMENTS": "Comments",
+    "IP_ADDRESS": "IP Address",
+    "PERMALINK": "Permanent Link",
+    "ALIAS": "Alias",
+    "UPDATE": "Update File",
+    "DELETE": "Delete following file?"
+  },
+
+  "ERROR": {
+    "PROJECTNAMENULL": "Project Name Does Not Exist"
+  }
+
+
+}

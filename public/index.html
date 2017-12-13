@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Visual Shower OTA</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href=".">
+
+        <!-- IE required polyfills, in this exact order -->
+        <!-- Polyfill(s) for older browsers -->
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+        <script src="assets/js/shim.min.js"></script>
+        <script src="assets/js/zone.js"></script>
+        <script src="assets/js/Reflect.js"></script>
+        <script src="assets/js/system.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <!-- 2. Configure SystemJS -->
+        <!-- Development mod -->
+        <script src="assets/js/systemjs.config.js"></script>
+        <script>
+            System.import('app').catch(function(err) { console.error(err); });
+        </script>
+    </head>
+
+    <body>
+        <app>
+            <div class="ui active inverted dimmer">
+                <div class="ui small loader"></div>
+            </div>
+        </app>
+        <!--  Production mod  -->
+        <!--<script src="assets/js/bundle.min.js"></script>-->
+    </body>
+</html>

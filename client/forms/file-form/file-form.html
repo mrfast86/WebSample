@@ -1,0 +1,113 @@
+
+<div ng2FileDrop
+     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+     (fileOver)="fileOverBase($event)"
+     [uploader]="uploader"
+     class="well my-drop-zone">
+
+    <input type="file" id="selectedFile" (change)="browsedFile($event)" style="display: none;" />
+    <input type="button" value="Browse" onclick="document.getElementById('selectedFile').click();" />
+    {{ uploader.nameDisplay }}
+</div>
+
+
+
+<form [ngFormModel]="fileForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.project_name.valid}" >
+        <label class="form-control-label" for="project_name_field">{{ 'FILE.PROJECT_NAME' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.PROJECT_NAME' | translate }}" id="project_name_field"
+               ngControl="project_name" [(ngModel)]="uploadedFile.project_name" >
+
+        <span class="text-help" *ngIf="!fileForm.controls.project_name.valid">
+              <div *ngFor="let e of fileForm.controls.project_name.errors | fieldErrors: 'Project Name'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.platform.valid}" >
+        <label class="form-control-label" for="platform_field">{{ 'FILE.PLATFORM' | translate }}</label>
+        <input type="text" disabled="true" class="form-control" placeholder="{{ 'FILE.PLATFORM' | translate }}" id="platform_field"
+               ngControl="platform" [(ngModel)]="uploadedFile.platform" >
+
+        <span class="text-help" *ngIf="!fileForm.controls.platform.valid">
+              <div *ngFor="let e of fileForm.controls.platform.errors | fieldErrors: 'Platform'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.version.valid}" >
+        <label class="form-control-label" for="version_field">{{ 'FILE.VERSION' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.VERSION' | translate }}" id="version_field"
+               ngControl="version" [(ngModel)]="uploadedFile.version" >
+
+    <span class="text-help" *ngIf="!fileForm.controls.version.valid">
+        <div *ngFor="let e of fileForm.controls.version.errors | fieldErrors: 'Version'" ></div>
+        {{e}}
+    </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.service_type.valid}" >
+        <label class="form-control-label" for="service_type_field">{{ 'FILE.SERVICE_TYPE' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.SERVICE_TYPE' | translate }}" id="service_type_field"
+               ngControl="service_type" [(ngModel)]="uploadedFile.service_type" >
+
+        <span class="text-help" *ngIf="!fileForm.controls.service_type.valid">
+            <div *ngFor="let e of fileForm.controls.service_type.errors | fieldErrors: 'Service Type'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.comment.valid}" >
+        <label class="form-control-label" for="comment_field">{{ 'FILE.COMMENTS' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.COMMENTS' | translate }}" id="comment_field"
+               ngControl="comment" [(ngModel)]="uploadedFile.comment">
+
+        <span class="text-help" *ngIf="!fileForm.controls.comment.valid">
+            <div *ngFor="let e of fileForm.controls.comment.errors | fieldErrors: 'Comment'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.build_datetime.valid}" >
+        <label class="form-control-label" for="build_datetime_field">{{ 'FILE.BUILD_DATETIME' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.BUILD_DATETIME' | translate }}" id="build_datetime_field"
+               ngControl="build_datetime" [(ngModel)]="uploadedFile.build_datetime">
+
+        <span class="text-help" *ngIf="!fileForm.controls.build_datetime.valid">
+            <div *ngFor="let e of fileForm.controls.build_datetime.errors | fieldErrors: 'Build DateTime'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-danger': !fileForm.controls.alias.valid}" >
+        <label class="form-control-label" for="alias_field">{{ 'FILE.ALIAS' | translate }}</label>
+        <input type="text" class="form-control" placeholder="{{ 'FILE.ALIAS' | translate }}" id="alias_field"
+               ngControl="alias" [(ngModel)]="uploadedFile.alias">
+
+        <span class="text-help" *ngIf="!fileForm.controls.alias.valid">
+            <div *ngFor="let e of fileForm.controls.alias.errors | fieldErrors: 'Alias'" ></div>
+            {{e}}
+        </span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-control-label" for="is_public_field">{{ 'PROJECT.PUBLIC' | translate }}</label>
+        <input type="checkbox" class="form-control" placeholder="{{ 'PROJECT.PUBLIC' | translate }}" id="is_public_field"
+               ngControl="is_public" >
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!uploader.completed || !fileForm.valid">{{ 'SUBMIT' | translate }}</button>
+    <div style="margin-bottom: 40px" *ngIf="uploader.started | async">
+        <div>
+            <div>
+                <h4>{{ 'PROGRESS' | translate }}</h4>
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [style.width]="(uploader.progress | async)/100 | percent">{{(uploader.progress | async)/100 | percent}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>

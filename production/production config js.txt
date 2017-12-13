@@ -1,0 +1,18 @@
+"use strict";
+
+var config = {};
+
+config.host = "localhost";
+config.user = "ota";
+config.password = "slk-ota-proj";
+config.database = "ota2-test_db";
+
+config.s3 = {
+    bucket:"ota2-test",
+    uploadWindow:1,
+    accessKey: "AKIAJ6C3KQPBEGXFXQUQ",
+    accessSecret:"BGr2v/o02X87WXLX//1SDweUxcVlrz9N8hKe2DI64uW0Zk",
+    region:"us-west-1"
+}
+
+module.exports = config;

@@ -1,0 +1,60 @@
+{
+  "SITE_NAME": "비주얼 샤워 OTA",
+  "HOME":"홈 페이지",
+
+  "SIGN_UP":"회원가입",
+  "LOGIN":"로그인",
+  "SUBMIT": "입력",
+  "EDIT": "변경",
+  "DELETE": "삭제",
+  "DOWNLOAD": "다운로드",
+
+  "PROJECT_LIST": "프로젝트 리스트",
+  "ADMIN": "관리",
+  "FILE_LIST": "파일 리스트",
+
+  "PUBLIC":"공개",
+  "NON_PUBLIC":"비공개",
+
+  "NEW_PROJECT": "프로젝트 추가",
+  "UPDATE_PROJECT": "프로젝트 변경",
+  "UPLOAD_FILE": "파일 업로드",
+  "PROGRESS": "프로그래스",
+
+  "OOPS":"이런",
+  "NOT_FOUND": "찾을수 없는 페이지입니다",
+  "SORRY_MESSAGE": "죄송합니다.. 에러가 발생하였습니다",
+  "TAKE_ME_HOME": "홈으로",
+
+  "NO_PROJECT":"프로젝트가 없습니다",
+  "NO_FILE": "파일이 없습니다",
+
+  "PROJECT": {
+    "NAME":  "프로젝트 명",
+    "CODE":  "프로젝트 코드",
+    "FILE_COUNT": "파일 카운트",
+    "PUBLIC": "공개 설정",
+    "DELETE": "다음 프로젝트를 삭제하시겠습니까?"
+  },
+
+  "FILE": {
+    "DROP_INSTRUCTION": "파일을 여기에 드래그 하십시오..",
+    "NAME":  "파일 명",
+    "PROJECT_NAME":  "프로젝트 명",
+    "PLATFORM":  "플랫폼",
+    "SERVICE_TYPE": "서비스 타입",
+    "VERSION": "버젼",
+    "BUILD_DATETIME": "빌드 날짜",
+    "BUILD_DATETIME": "빌드 시간",
+    "COMMENTS": "코멘트",
+    "IP_ADDRESS": "IP 주소",
+    "PERMALINK": "영구 주소",
+    "ALIAS": "Alias",
+    "UPDATE": "파일 변경",
+    "DELETE": "다음 파일을 삭제하시겠습니까?"
+  },
+
+  "ERROR": {
+    "PROJECTNAMENULL": "프로젝트 이름이 존재하지 않습니다"
+  }
+}
